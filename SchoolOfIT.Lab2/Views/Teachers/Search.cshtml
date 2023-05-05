@@ -1,0 +1,29 @@
+﻿@model List<SearchViewModel>
+@{
+    ViewData["Title"] = "ListTeachersAndCourses";
+}
+<h1>List of Teachers and Courses</h1>
+<form asp-action="Search" asp-controller="Teachers" method="get">
+    <div class="form-group">
+        <label for="searchString">Sök efter användarnamn eller mejl-address:</label>
+        <input type="text" class="form-control" name="searchString"  value="" />
+        <input type="submit" value="Search" class="btn btn-primary">
+    </div>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Teacher Name</th>
+            <th>Course Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TeacherName</td>
+                <td>@item.CourseName</td>
+            </tr>
+        }
+    </tbody>
+</table>
